@@ -1,16 +1,81 @@
-<header>
-    <h1>Ads - {{pageTitle}}</h1>
-</header>
-<div id="wrapper">
-    <div class="row">
-        <div class="col-md-3">
-            <left-sidebar></left-sidebar>
+<ul class="ads">
+    <li ng-repeat="ad in ads.ads" class="box" data-id="{{ad.id}}">
+        <div class="row">
+            <div class="col-md-8">
+                <h2 class="pull-left">{{ad.title}}</h2>
+            </div>
+            <div class="col-md-4" >
+                <span class="pull-right">
+                    <strong>{{ad.date | date:'d-MMM-yyyy'}}</strong>
+                </span>
+            </div>
         </div>
-        <div class="col-md-6">
-            <public-ads></public-ads>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img class="ad-image" ng-src="{{ad.imageDataUrl}}" />
+                    </div>
+                    <div class="col-md-9">
+                        <div class="panel panel-default">
+                            <div class="panel-body">{{ad.text}}</div>
+                        </div>
+                        <div>
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <strong><div class="panel-body">Name:  </div></strong>
+                                </div>
+                                <div class="col-md-11">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">{{ad.ownerName}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <strong><div class="panel-body">Email:  </div></strong>
+                                </div>
+                                <div class="col-md-11">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">{{ad.ownerEmail}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <strong><div class="panel-body">Phone:  </div></strong>
+                                </div>
+                                <div class="col-md-11">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">{{ad.ownerPhone}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div>
+                                        <strong>
+                                            <span class="pull-right">
+                                                <a href="#/user/ads/edit/{{ad.id}}/{{ad.title}}">Edit</a>
+                                            </span>
+                                        </strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-3">
-            <right-sidebar></right-sidebar>
-        </div>
-    </div>
+    </li>
+</ul>
+
+<div ng-if="ads.ads.length==0" class="box no-data">
+    No ads found.
 </div>
+
+<pagination total-items="ads.numItems" ng-model="adsParams.startPage"
+            items-per-page="adsParams.pageSize" ng-change="reloadAds()"
+            max-size="9" boundary-links="true">
+</pagination>
