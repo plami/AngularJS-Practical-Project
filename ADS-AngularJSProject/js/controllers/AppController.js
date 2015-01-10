@@ -13,8 +13,8 @@ app.controller('AppController',
         // Implement the "logout" button click event handler
         $scope.logout = function() {
             authService.logout();
-            // TODO: display "Logout successful" notification
-            // TODO: redirect to the application home page
+            notifyService.showInfo("Logout successful");
+            $location.path('/');
         };
     }
 );

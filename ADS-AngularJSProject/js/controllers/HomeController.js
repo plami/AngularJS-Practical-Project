@@ -6,13 +6,14 @@
 
 // The HomeController holds the presentation logic for the home screen
 app.controller('HomeController',
-    function ($scope, $rootScope, adsService, notifyService, pageSize) {
+    function ($scope, adsService, notifyService, pageSize) {
+
         $scope.adsParams = {
-            'startPage': 1,
-            'pageSize': pageSize
+            'startPage' : 1,
+            'pageSize' : pageSize
         };
 
-        $scope.reloadAds = function () {
+        $scope.reloadAds = function() {
             adsService.getAds(
                 $scope.adsParams,
                 function success(data) {
@@ -23,6 +24,7 @@ app.controller('HomeController',
                 }
             );
         };
+
         $scope.reloadAds();
 
         // This event is sent by RightSideBarController when the current category is changed
