@@ -14,7 +14,7 @@ app.controller('LoginController',
                     $location.path("/");
                 },
                 function error(err) {
-                    // TODO: display the error message returned by the server
+                    notifyService.showError("Login failed", err);
                 }
             );
         };
