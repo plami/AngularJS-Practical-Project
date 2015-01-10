@@ -24,5 +24,15 @@ app.controller('HomeController',
             );
         };
         $scope.reloadAds();
+
+        // This event is sent by RightSideBarController when the current category is changed
+        $scope.$on("categorySelectionChanged", function(event, selectedCategoryId) {
+            $scope.adsParams.categoryId = selectedCategoryId;
+            $scope.adsParams.startPage = 1;
+            $scope.reloadAds();
+        });
+
+        // TODO: implement similar logic for filtering by category
+
     }
 );
