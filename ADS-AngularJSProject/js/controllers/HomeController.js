@@ -32,7 +32,11 @@ app.controller('HomeController',
             $scope.reloadAds();
         });
 
-        // TODO: implement similar logic for filtering by category
-
+        // This event is sent by RightSideBarController when the current town is changed
+        $scope.$on("townSelectionChanged", function(event, selectedTownId) {
+            $scope.adsParams.townId = selectedTownId;
+            $scope.adsParams.startPage = 1;
+            $scope.reloadAds();
+        });
     }
 );
