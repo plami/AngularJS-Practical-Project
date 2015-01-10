@@ -19,17 +19,7 @@ app.factory('authService',
                 }).error(error);
             },
 
-            register: function(userData, success, error) {
-                var request = {
-                    method: 'POST',
-                    url: baseServiceUrl + '/api/user/register',
-                    data: userData
-                };
-                $http(request).success(function(data){
-                    sessionStorage['currentUser'] = JSON.stringify(data);
-                    success(data);
-                }).error(error)
-            },
+            // TODO: implement “register” function (just like the login)
 
             logout: function() {
                 delete sessionStorage['CurrentUser'];

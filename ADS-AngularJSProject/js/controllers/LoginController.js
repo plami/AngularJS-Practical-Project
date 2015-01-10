@@ -6,10 +6,18 @@
 
 // The LoginController is responsible for the "Login" screen
 app.controller('LoginController',
-    function ($scope, $location, authService, notifyService) {
-        $scope.authService = authService;
-        $scope.notifyService = notifyService;
-        $location.authService = authService;
-        $location.notifyService = notifyService;
+    function ($scope, $rootScope, $location, authService, notifyService) {
+        $scope.login = function(userData) {
+            authService.login(userData,
+                function success() {
+                    notifyService.showInfo("Login successful");
+                    $location.path("/");
+                },
+                function error(err) {
+                    // TODO: display the error message returned by the server
+                }
+            );
+        };
     }
 );
+
