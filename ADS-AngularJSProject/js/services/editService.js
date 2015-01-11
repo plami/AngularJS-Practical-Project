@@ -31,6 +31,6 @@ app.factory('editService', function ($http, baseServiceUrl, authService) {
             };
 
             $http(request).success(success).error(error);
-        }
+        },
     }
 });
