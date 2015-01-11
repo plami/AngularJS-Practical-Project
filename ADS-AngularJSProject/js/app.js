@@ -1,12 +1,12 @@
 'use strict';
 
-var app = angular.module('app', ['ngRoute', 'ngResource','ui.bootstrap.pagination']);
+var app = angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap.pagination']);
 
 app.constant('baseServiceUrl', 'http://softuni-ads.azurewebsites.net');
 app.constant('pageSize', 2);
 
+// 
 app.config(function ($routeProvider) {
-
     $routeProvider.when('/', {
         templateUrl: 'templates/home.html',
         controller: 'HomeController'
@@ -22,6 +22,16 @@ app.config(function ($routeProvider) {
         controller: 'RegisterController'
     });
 
+    $routeProvider.when('/user/ads/publish', {
+        templateUrl: 'templates/user/publish-new-ad.html',
+        controller: 'UserPublishNewAdController'
+    });
+
+    $routeProvider.when('/user/ads', {
+        templateUrl: 'templates/user/personal-ads.html',
+        controller: 'UserAdsController'
+    });
+
     $routeProvider.when('/user/profile', {
         templateUrl: 'templates/user/edit-profile.html',
         controller: 'EditProfileController'
@@ -32,30 +42,19 @@ app.config(function ($routeProvider) {
         controller: 'ChangePasswordController'
     });
 
-    $routeProvider.when('/user/ads/publish', {
-        templateUrl: 'templates/partial/publish-new-ad.html',
-        controller: 'UserPublishNewAdController'
+    $routeProvider.when('/user/ads/:id', {
+        templateUrl: 'templates/user/edit-add.html',
+        controller: 'EditAdsController'
     });
 
-    //
-    $routeProvider.when('/user/ads', {
-        templateUrl: 'templates/home.html',
+    $routeProvider.when('/user/ads/deactivate/:id', {
+        templateUrl: 'templates/user/personal-ads.html',
         controller: 'UserAdsController'
     });
 
-    //
-    $routeProvider.when('/user/ads/edit/:id/:title', {
-        templateUrl: 'templates/user/edit-add.html',
-        controller: 'EditAddController'
-    });
-
-    $routeProvider.when('/user/ads/:id', {
-        templateUrl: 'templates/user/edit-add.html',
-        controller: 'EditAddController'
-    });
-
     $routeProvider.when('/user/ads/publishAgain/:id', {
-        redirectTo: '/user/ads'
+        templateUrl: 'templates/user/personal-ads.html',
+        controller: 'UserAdsController'
     });
 
     $routeProvider.when('/user/ads/delete/:id', {
@@ -66,14 +65,13 @@ app.config(function ($routeProvider) {
     $routeProvider.otherwise(
         { redirectTo: '/' }
     );
-
 });
 
+// Global authorization check to avoid anonymous site visitors to access user screens
 app.run(function ($rootScope, $location, authService) {
     $rootScope.$on('$locationChangeStart', function (event) {
-        if ($location.path().indexOf("/user/") != -1 && !authService.isLoggedIn()) {
-            // Authorization check: anonymous site visitors cannot access user routes
-            $location.path("/");
+        if ($location.path().indexOf('/user/') != -1 && !authService.isLoggedIn()) {
+            $location.path('/');
         }
     });
 });
