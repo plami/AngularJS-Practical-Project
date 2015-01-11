@@ -1,6 +1,6 @@
 'use strict';
 
-//performing HTTP GET request
+//performing HTTP GET request (using $resource service)
 app.factory('adsService',
     function ($resource, baseServiceUrl) {
         var adsResource = $resource(

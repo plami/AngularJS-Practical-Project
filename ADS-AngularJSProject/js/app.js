@@ -6,7 +6,7 @@ var app = angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap.paginati
 app.constant('baseServiceUrl', 'http://softuni-ads.azurewebsites.net');
 app.constant('pageSize', 2);
 
-// parameters to which we want to access (from outside)
+// parameters to which we want to access (from outside), using routes for re-directing to the different pages
 app.config(function ($routeProvider) {
     $routeProvider.when('/', {
         templateUrl: 'templates/home.html',
@@ -44,7 +44,7 @@ app.config(function ($routeProvider) {
     });
 
     $routeProvider.when('/user/ads/:id', {
-        templateUrl: 'templates/user/edit-add.html',
+        templateUrl: 'templates/user/edit-ads.html',
         controller: 'EditAdsController'
     });
 
