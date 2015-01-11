@@ -1,4 +1,7 @@
 'use strict';
+// The authService hold the business logic.
+// It is responsible for performing login / logout / register
+// and keeping the information about the currently logged in user (anonymous site visitor / normal user / administrator):
 
 app.factory('authService',
     function ($http, baseServiceUrl) {
@@ -9,21 +12,31 @@ app.factory('authService',
                     url: baseServiceUrl + '/api/user/login',
                     data: userData
                 };
-                $http(request).success(function(data){
-                   sessionStorage['currentUser'] = JSON.stringify(data);
+                $http(request).success(function(data) {
+                    sessionStorage['currentUser'] = JSON.stringify(data);
                     success(data);
                 }).error(error);
             },
 
-            // TODO: implement “register” function (just like the login)
+            register: function(userData, success, error) {
+                var request = {
+                    method: 'POST',
+                    url: baseServiceUrl + '/api/user/register',
+                    data: userData
+                };
+                $http(request).success(function(data) {
+                    sessionStorage['currentUser'] = JSON.stringify(data);
+                    success(data);
+                }).error(error);
+            },
 
             logout: function() {
-                delete sessionStorage['CurrentUser'];
+                delete sessionStorage['currentUser'];
             },
 
             getCurrentUser : function() {
                 var userObject = sessionStorage['currentUser'];
-                if(userObject){
+                if (userObject) {
                     return JSON.parse(sessionStorage['currentUser']);
                 }
             },
