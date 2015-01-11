@@ -1,11 +1,12 @@
 'use strict';
 
+//dependency - in the module app we are using the other modules from the external libraries
 var app = angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap.pagination']);
 
 app.constant('baseServiceUrl', 'http://softuni-ads.azurewebsites.net');
 app.constant('pageSize', 2);
 
-// 
+// parameters to which we want to access (from outside)
 app.config(function ($routeProvider) {
     $routeProvider.when('/', {
         templateUrl: 'templates/home.html',

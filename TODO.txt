@@ -1,3 +1,13 @@
 1.Read the task description
 2.Research the services
 3.Write the code
+
+!low coupling ad high cohesions - the services are separated from the controller and the controller is focused only on his main purpose
+
+Sites and tutorials
+
+https://docs.angularjs.org/api
+http://telerikacademy.com/Courses/Courses/Details/169
+
+
+
