@@ -1,7 +1,3 @@
-/**
- * Created by plamena on 1/8/2015.
- */
-
 'use strict';
 
 // The AppController holds the presentation logic for the entire app (common for all screens)

@@ -1,7 +1,3 @@
-/**
- * Created by plamena on 1/8/2015.
- */
-
 'use strict';
 
 // The LoginController is responsible for the "Login" screen
