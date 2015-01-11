@@ -43,7 +43,7 @@ app.config(function ($routeProvider) {
         controller: 'ChangePasswordController'
     });
 
-    $routeProvider.when('/user/ads/:id', {
+    $routeProvider.when('/user/ads/edit/:id', {
         templateUrl: 'templates/user/edit-ads.html',
         controller: 'EditAdsController'
     });
@@ -67,6 +67,7 @@ app.config(function ($routeProvider) {
         { redirectTo: '/' }
     );
 });
+
 
 // Global authorization check to avoid anonymous site visitors to access user screens
 app.run(function ($rootScope, $location, authService) {
