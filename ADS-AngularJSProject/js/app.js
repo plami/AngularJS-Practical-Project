@@ -45,20 +45,16 @@ app.config(function ($routeProvider) {
 
     //
     $routeProvider.when('/user/ads/edit/:id/:title', {
-        templateUrl: 'templates/user/edit-ads.html',
-        controller: 'UserEditAdController'
+        templateUrl: 'templates/user/edit-add.html',
+        controller: 'EditAddController'
     });
 
     $routeProvider.when('/user/ads/:id', {
-        templateUrl: 'templates/user/edit-ads.html',
-        controller: 'EditAdsController'
+        templateUrl: 'templates/user/edit-add.html',
+        controller: 'EditAddController'
     });
 
     $routeProvider.when('/user/ads/publishAgain/:id', {
-        redirectTo: '/user/ads'
-    });
-
-    $routeProvider.when('/user/ads/deactivate/:id', {
         redirectTo: '/user/ads'
     });
 

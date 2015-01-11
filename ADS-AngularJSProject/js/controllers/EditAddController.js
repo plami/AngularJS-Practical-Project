@@ -1,4 +1,4 @@
-app.controller('EditAdsController', function ($scope, $rootScope, categoriesService, townsService,
+app.controller('EditAddController', function ($scope, $rootScope, categoriesService, townsService,
                                               editService, notifyService, $location, userService) {
     $scope.$on("EditAdData", function (event, editAdData) {
         $scope.adData = editAdData;
