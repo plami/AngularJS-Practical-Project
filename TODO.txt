@@ -3,6 +3,8 @@
 3.Write the code
 
 !low coupling ad high cohesions - the services are separated from the controller and the controller is focused only on his main purpose
+!in the index. html I am including all the links to the different part of my SPA Application (header.html, left-side-bar.html etc.) and by this way 
+I am not repeting code => big problem in the programming
 
 Sites and tutorials
 
